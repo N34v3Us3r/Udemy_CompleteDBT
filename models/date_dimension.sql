@@ -13,7 +13,8 @@ WITH dates AS
     , CASE WHEN dayname(started_at_ts) IN ('Sat', 'Sun')
         THEN 'Weekend'
         ELSE 'BusinessDay'
-        END Day_Type
+        END day_type
+    , {{ day_type ('started_at') }} day_type_macro
     , CASE 
         WHEN MONTH(started_at_ts) IN (12, 1, 2)
             THEN 'Winter'
@@ -23,8 +24,10 @@ WITH dates AS
             THEN 'Summer'
         WHEN MONTH(started_at_ts) IN (9, 10,11)
             THEN 'Fall'
-        END station_of_year        
-    from dates
+        END station_of_year
+    , {{ function1('started_at') }} tense_macro
+    , {{ get_season('started_at') }} season_macro
+    FROM dates
 )
 select *
 from cte
