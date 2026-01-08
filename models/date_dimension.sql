@@ -29,6 +29,6 @@ WITH dates AS
     , {{ get_season('started_at') }} season_macro
     FROM dates
 )
-select *
+select DISTINCT *
 from cte
 order by date_started_at
