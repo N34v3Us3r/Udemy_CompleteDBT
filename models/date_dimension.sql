@@ -2,7 +2,7 @@ WITH dates AS
 (
     select try_to_timestamp(started_at) started_at_ts
     , *
-    from {{ source('demo', 'bike') }}
+    from {{ ref('stage_bike') }}
     where try_to_timestamp(started_at) IS NOT NULL 
 )
 , cte AS
