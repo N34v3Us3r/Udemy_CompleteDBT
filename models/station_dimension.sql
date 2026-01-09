@@ -4,7 +4,7 @@ WITH station_recs AS
     , start_station_id station_id
     , start_lat
     , start_lng
-    FROM {{ source('demo', 'bike') }}
+    FROM {{ ref('stage_bike') }}
     WHERE ride_id <> 'ride_id'
     QUALIFY ROW_NUMBER () OVER (PARTITION BY start_station_id ORDER BY start_station_id) = 1
 )

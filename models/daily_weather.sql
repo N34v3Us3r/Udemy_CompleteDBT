@@ -27,4 +27,5 @@ WITH daily_weather AS
      
 )
 SELECT *
+,  round({{ imp_to_metric_temp ('avg_temp') }}, 2) avg_temp_celsius 
 FROM daily_weather_agg
