@@ -7,3 +7,12 @@ sources:
     tables:
       - name: bike
       - name: weather
+
+  - name: Compass
+    database: LANDING
+    schema: COMPASS
+    tables:
+      - name: Student
+      - name: Staff
+      - name: Parent
+      - name: TimeSliceAttendanceLineWholeDay
